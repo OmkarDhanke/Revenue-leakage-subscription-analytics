@@ -96,3 +96,17 @@
     * **High Risk Segment:** The **Enterprise Plan** is the biggest bleeder, losing $13k compared to 800 for Basic plans.
 
 👉 **[Read the Executive Summary](Docs/day_09_executive_summary.md)**
+
+## Day 10: Final Dashboard & Visualization
+**Focus:** Created "Boardroom-Ready" visualizations to communicate the findings effectively.
+
+* **Status:** ✅ Complete
+* **Action:**
+    1.  Executed `sql/07_export_for_python.sql` to flatten the relational data into an analytical dataset.
+    2.  Used Python (Pandas/Seaborn) in `revenue_leakage_analysis.ipynb` to generate charts.
+* **Deliverables:**
+    * Generated 3 key charts: **Monthly Trend**, **Category Breakdown**, and **Risk by Plan**.
+    * Stored visualizations in the `visualizations/` folder.
+* **Project Status:** **COMPLETE**. The pipeline from Data Generation -> SQL Analysis -> Visualization is fully functional.
+
+👉 **[View the Visual Gallery](Docs/day_10_visual_gallery.md)**
