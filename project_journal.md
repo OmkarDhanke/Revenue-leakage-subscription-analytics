@@ -100,7 +100,6 @@
 ## Day 10: Final Dashboard & Visualization
 **Focus:** Created "Boardroom-Ready" visualizations to communicate the findings effectively.
 
-* **Status:** ✅ Complete
 * **Action:**
     1.  Executed `sql/07_export_for_python.sql` to flatten the relational data into an analytical dataset.
     2.  Used Python (Pandas/Seaborn) in `revenue_leakage_analysis.ipynb` to generate charts.
@@ -110,3 +109,14 @@
 * **Project Status:** **COMPLETE**. The pipeline from Data Generation -> SQL Analysis -> Visualization is fully functional.
 
 👉 **[View the Visual Gallery](Docs/day_10_visual_gallery.md)**
+
+## Day 11: Statistical Forensics
+**Focus:** Applied statistical analysis (Mean vs. Median, Pareto) to determine the "Risk Shape" of the data.
+
+* **Action:** Used Python (Pandas) in `11_statistical_forensics.ipynb` to analyze the `leakage_data_export.csv`.
+* **Key Findings:**
+    * **The Whale Effect:** Mean loss ($33) is 4x the Median ($9), proving the issue is driven by high-value outliers.
+    * **Pareto Principle:** Confirmed that the **Enterprise Plan** accounts for **70.8%** of total leakage.
+    * **Kill Zone:** Identified **North America / Enterprise** as the highest-risk segment.
+
+👉 **[Read the Statistical Report](Docs/day_11_statistical_findings.md)**
