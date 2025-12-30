@@ -1,4 +1,4 @@
-# 7.0 Preliminary Revenue Leakage Analysis
+# 1.0 Preliminary Revenue Leakage Analysis
 
 ## 1. Collection Gap (Unpaid Bills)
 * **Observation:** Across 2024, there is a consistent gap between Invoiced and Collected revenue.

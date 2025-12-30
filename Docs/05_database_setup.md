@@ -1,4 +1,4 @@
-# Project Phase 5: Database Provisioning & Data Loading
+# 5: Database Provisioning & Data Loading
 
 
 ## 1.0 Environment Setup

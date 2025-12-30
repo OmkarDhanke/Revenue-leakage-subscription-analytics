@@ -1,4 +1,4 @@
-# 10.0 Final Visual Gallery
+# 7: Final Visual Gallery
 
 
 ## 1. Leakage Trend (Volatility Analysis)

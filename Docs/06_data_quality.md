@@ -1,4 +1,4 @@
-# 6.0 Data Quality Report
+# 6: Data Quality Report
 
 ## 1. Technical Health Checks (Pass/Fail)
 These tests ensure the database structure is sound and no logical impossibilities exist (like duplicate IDs or payments happening before invoices).

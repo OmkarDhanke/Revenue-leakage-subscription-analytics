@@ -1,4 +1,4 @@
-# Day 4: Creation of Synthetic Data
+# 4: Creation of Synthetic Data
 
 ## 1.0 Executive Summary
 To validate the revenue leakage hypotheses I defined in Phase 1, I needed data. Since real-world financial data is sensitive and hard to get, I wrote a Python script to generate a **Synthetic Dataset** that mimics a real-world SaaS billing engine.

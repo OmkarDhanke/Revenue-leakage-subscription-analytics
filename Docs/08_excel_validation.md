@@ -1,4 +1,4 @@
-# 12.0 Excel Validation & Business Logic Check
+# 8: Excel Validation & Business Logic Check
 
 ## 1. Executive Summary
 Before importing data into Power BI, we performed a "Sanity Check" to ensure no data was lost during the export process. We compared the CSV totals against our previous SQL findings.

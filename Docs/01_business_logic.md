@@ -1,4 +1,4 @@
-# Day 1: Business Thinking & Data Design
+# 1: Business Thinking & Data Design
 
 ## 1. Business Context
 To accurately analyze revenue, we must first map the operational flow of the business.

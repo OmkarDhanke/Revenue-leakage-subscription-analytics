@@ -1,4 +1,4 @@
-# Day 3: Data Simulation & Chaos Strategy
+# 3: Data Simulation & Chaos Strategy
 
 ## 1.0 Volume Parameters (The Scale)
 * **Time Period:** 1 Year (Jan 2024 – Dec 2024).

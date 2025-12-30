@@ -1,4 +1,4 @@
-# Day 2: Identify Data & Relationships
+# 2: Identify Data & Relationships
 
 ## 1.0 Architectural Strategy
 To support high-performance reporting, we are utilizing a relational database structure.
