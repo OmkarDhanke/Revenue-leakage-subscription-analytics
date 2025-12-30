@@ -120,3 +120,14 @@
     * **Kill Zone:** Identified **North America / Enterprise** as the highest-risk segment.
 
 👉 **[Read the Statistical Report](Docs/day_11_statistical_findings.md)**
+
+## Day 12: Excel Validation & Business Checks
+**Focus:** Audited the final CSV dataset to ensure 100% accuracy before Dashboard ingestion.
+
+* **Action:** Performed 3 critical checks on `dashboard_master.csv`:
+    1.  **Revenue Sum:** Confirmed total leakage is **$18,348.15**, matching Day 9 SQL queries.
+    2.  **Logic Check:** Verified zero negative values in the leakage column.
+    3.  **Completeness:** Confirmed data spans the full 2024 fiscal year (Jan-Dec).
+* **Outcome:** The dataset is certified "Clean" and ready for Power BI/Tableau.
+
+👉 **[Read the Validation Report](Docs/day_12_excel_validation.md)**

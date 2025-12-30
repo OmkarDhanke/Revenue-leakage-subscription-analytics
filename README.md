@@ -1,52 +1,61 @@
-# 📉 Revenue Leakage & Subscription Integrity Analysis
+# 📉 Revenue Leakage & Subscription Integrity Analysis (WIP)
 
-![Status](https://img.shields.io/badge/Status-Day%2010%20of%2015%20(In%20Progress)-yellow) ![Tech](https://img.shields.io/badge/Stack-Python%20%7C%20SQL%20%7C%20PowerBI-blue) ![Domain](https://img.shields.io/badge/Domain-SaaS%20Billing-orange)
+**Current Status:** 🚧 Active Development (Currently at Day 12 of 15)
 
-### 🚀 Project Overview
-**"Money doesn't just disappear... or does it?"**
-This project simulates a real-world SaaS billing engine ("CloudFlow Analytics") to identify, quantify, and resolve revenue leakage.
-
-I engineered a **"Chaos Matrix"** using Python to inject realistic operational failures—**Ghost Subscribers** (missing invoices), **Zombie Accounts** (unpaid access), and **Leaky Buckets** (partial payments)—into a dataset of 11,000+ records. I am currently using SQL and Python to hunt down these errors and visualize the financial impact.
+This repository documents a 15-day project to build, break, and analyze a subscription billing system. If you are looking through this project, follow the path below to understand the logic in the correct order.
 
 ---
 
-### 🗺️ Current Progress: Day 10 of 15
-The project is divided into three 5-day sprints. I have completed the **Engineering** and **Analysis** phases and am moving into **Dashboarding & Final Presentation**.
+### 🗺️ How to Navigate This Project
 
-#### 🟢 Phase 1: Engineering & Design (Complete)
-* **Day 1:** Business Logic & Leakage Scenarios (Ghosts, Zombies).
-* **Day 2:** Relational Database Schema Design (5 Tables).
-* **Day 3:** Data Simulation Logic ("Chaos Matrix" Design).
-* **Day 4:** Python Data Generation (11,000+ Records).
-* **Day 5:** Database Provisioning & ETL (MySQL).
+This project is structured chronologically. To follow the "story," go through the files in this order:
 
-#### 🟢 Phase 2: Forensic Analysis (Complete)
-* **Day 6:** Data Quality Assurance & Validation.
-* **Day 7:** Revenue Waterfall Analysis (Proved $1,200+ leakage/month).
-* **Day 8:** Root Cause Identification (Created "Hit List" of leaking IDs).
-* **Day 9:** Executive Reporting (Trend & Segmentation Analysis).
-* **Day 10:** Exploratory Visualization (Python/Seaborn Charts).
+#### Phase 1: The Plan & Design (Completed)
+Before looking at code, read the documentation to understand *what* we are building and *why*.
+1.  **Start with the Business Logic:**
+    * 📄 Read `docs/day_01_business_logic.md` to see the leakage scenarios (Ghosts, Zombies, Leaky Buckets).
+2.  **See the Blueprint:**
+    * 📄 Read `docs/day_02_data_design.md` to see the 5-table schema and ER Diagram.
+    
+
+[Image of Entity Relationship Diagram for subscription billing system]
+
+3.  **Understand the "Chaos":**
+    * 📄 Read `docs/day_03_data_simulation_logic.md` to see how we planned to break the data intentionally.
+
+#### Phase 2: The Build & Forensics (Completed)
+Once you know the plan, look at how we created the synthetic data and hunted down errors.
+4.  **The Engine:**
+    * 🐍 Check `python/data_generator.py`. This is the Python script that created the data.
+5.  **The Investigation (SQL):**
+    * 🔍 Run `sql/05_forensic_leakage_identification.sql`. This is the core analysis that identified specific "Zombie" and "Ghost" users.
+    * 📄 Read `docs/day_09_executive_summary.md` to see the final financial impact report ($18k+ lost).
+
+#### Phase 3: Dashboarding & Visualization (Active Phase)
+Now, we are translating raw data into visual insights.
+6.  **The Statistical Deep Dive:**
+    * 📊 Check `docs/day_10_visual_gallery.md` to see the Python charts proving the "Enterprise Plan" is the biggest risk.
+7.  **The "Handshake" Audit (Day 12):**
+    * 📄 **Read `docs/day_12_validation_log.md`.** (Start Here for today's update).
+    * This document proves that our SQL data matches our Excel export perfectly ($18,348.15), certifying it for dashboarding.
 
 ---
 
-### 📊 Key Business Findings (So Far)
-The SQL forensic analysis (Day 9) revealed:
+### 📂 Quick Folder Reference
 
-* **Primary Driver:** **90.31%** of leakage comes from **"Zombie Accounts"** (Invoices generated but strictly unpaid).
-* **High-Risk Segment:** The **Enterprise Plan** accounts for **~$13,000** in lost revenue (vs only ~$800 for Basic plans).
-* **Volatility:** Leakage spiked drastically in March 2024, suggesting a specific batch-processing failure.
-
----
-
-### 📂 Repository Structure
-
-| Folder | Contents |
+| Folder | What's Inside? |
 | :--- | :--- |
-| **`python/`** | 🐍 Data generation scripts & Jupyter Notebooks. |
-| **`sql/`** | 🔍 Numbered SQL scripts (01-07) representing the analysis workflow. |
-| **`data/`** | 💾 `raw/` source files and `derived/` exports for dashboarding. |
-| **`docs/`** | 📄 Daily logs, Business Logic, and the Visual Gallery. |
-| **`visualizations/`** | 📈 Static charts exported from Python (Phase 2 output). |
-| **`dashboard/`** | 📊 *(Coming Soon)* Power BI `.pbix` files (Phase 3 output). |
+| **`sql/`** | Numbered SQL scripts (01-08) to run in MySQL Workbench. |
+| **`python/`** | Data generation scripts & Jupyter Notebooks. |
+| **`data/`** | `raw/` source files and `derived/` exports for dashboarding. |
+| **`docs/`** | The daily logs and explanations. This is the "Journal" of the project. |
+| **`visualizations/`** | Static charts exported from Python. |
 
 ---
+
+### 📝 Project Timeline & Progress
+* **✅ Day 1-5:** Planning, Data Generation, DB Setup.
+* **✅ Day 6-9:** Forensic Analysis (Proved $18k leakage).
+* **✅ Day 10-11:** Python Visualization & Risk Analysis.
+* **✅ Day 12:** Excel Validation & Data Certification.
+* **🔜 Day 13-15:** Interactive Dashboarding (Power BI) & Final Presentation.
