@@ -74,7 +74,7 @@
     * **Collection Gap:** Identified a consistent monthly variance (approx. 98% recovery rate), resulting in **$1,247.95** lost in September alone.
     * **Generation Gap:** The spot check showed a variance of -$80.00, indicating that while Ghost Subscribers exist, their financial impact was temporarily masked by new customer acquisition in September.
 
-👉 **[Read the Preliminary Insights](Insights/01_preliminary_findings.md)**
+👉 **[Read the Preliminary Insights](insights/01_preliminary_findings.md)**
 
 ## Day 8: Identify & Classify Leakage
 **Focus:** Identified the specific `invoice_ids` and `sub_ids` responsible for revenue loss.
@@ -84,7 +84,7 @@
     * This "Hit List" consolidates Zombies, Ghosts, and Partial Payments into a single view.
     * Standardized the schema so all leakage types have a `leakage_amount` and `leakage_category`.
 
-👉 **[Read the Forensic Analysis Doc](Insights/02_root_cause_report.md)**
+👉 **[Read the Forensic Analysis Doc](insights/02_root_cause_report.md)**
 
 ## Day 9: Trends & Aggregations (Business Intelligence)
 **Focus:** Aggregated the granular forensic data into high-level business Insights using SQL.
@@ -94,7 +94,7 @@
     * **Primary Driver:** "Unpaid Invoices" account for **90.31%** of all lost revenue ($16,570).
     * **High Risk Segment:** The **Enterprise Plan** is the biggest bleeder, losing $13k compared to 800 for Basic plans.
 
-👉 **[Read the Executive Summary](Insights/03_executive_summary.md)**
+👉 **[Read the Executive Summary](insights/03_executive_summary.md)**
 
 ## Day 10: Final Dashboard & Visualization
 **Focus:** Created "Boardroom-Ready" visualizations to communicate the findings effectively.
@@ -118,7 +118,7 @@
     * **Pareto Principle:** Confirmed that the **Enterprise Plan** accounts for **70.8%** of total leakage.
     * **Kill Zone:** Identified **North America / Enterprise** as the highest-risk segment.
 
-👉 **[Read the Statistical Report](Insights/04_statistical_findings.md)**
+👉 **[Read the Statistical Report](insights/04_statistical_findings.md)**
 
 ## Day 12: Excel Validation & Business Checks
 **Focus:** Audited the final CSV dataset to ensure 100% accuracy before Dashboard ingestion.
