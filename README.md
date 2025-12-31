@@ -120,6 +120,6 @@ The project is organized into a modular ETL and Analysis pipeline:
 
 ---
 
-**Author:** **Omkar Dhanke**
-**Connect with me:** [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/omkar-dhanke)
+* **Author:** **Omkar Dhanke**    
+* **Connect with me:** [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/omkar-dhanke)
 
