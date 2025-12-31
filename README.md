@@ -36,7 +36,7 @@ I classified revenue leakage into three distinct technical categories based on t
 ## 📊 The Revenue Integrity Dashboard
 *A high-level view designed for the CFO to monitor billing health and recovery progress.*
 
-![Dashboard Preview](visualizations/dashboard_final.png)
+![Dashboard Demo](visualizations/dashboard_demo.gif)
 *(Note: Visualizes the March 2024 volatility spike identified in the Executive Summary)*
 
 ---
