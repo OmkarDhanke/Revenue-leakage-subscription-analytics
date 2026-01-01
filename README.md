@@ -1,125 +1,127 @@
-# 📉 CloudFlow: Revenue Leakage Detection & Recovery
+# 📉 CloudFlow  
+## Revenue Leakage Detection in a Simulated SaaS Billing System
 
-![Status](https://img.shields.io/badge/Status-Completed-success) ![Tools](https://img.shields.io/badge/Tools-SQL%20%7C%20Python%20%7C%20PowerBI-blue) ![Domain](https://img.shields.io/badge/Domain-FinOps%20%7C%20SaaS-orange)
+![Status](https://img.shields.io/badge/Status-Completed-success) ![Tools](https://img.shields.io/badge/Tools-SQL%20%7C%20Python%20%7C%20PowerBI-blue) ![Domain](https://img.shields.io/badge/Domain-SaaS%20Billing%20%7C%20FinOps-orange)
 
-**A full-stack data forensic project simulating a SaaS billing environment to identify recoverable $18,348 in lost revenue, isolate root causes using SQL & Python, and design an automated recovery dashboard.**
+**An end-to-end analytical audit simulation that models a SaaS billing environment to detect, classify, and monitor revenue leakage exposure using SQL, Python, and Power BI.**
+
+> ⚠️ **Important Note**  
+> All data used in this project is **synthetically generated** to simulate realistic SaaS billing failure scenarios.  
+> Financial figures represent **simulated revenue leakage exposure**, not real monetary recovery.
 
 ---
 
 ## 📖 Executive Summary
 
-**The Situation:** CloudFlow Analytics (a hypothetical B2B SaaS provider) suspected revenue attrition due to billing system discrepancies but lacked visibility into the specific failure points.
-**
-**The Solution:** I engineered a forensic data pipeline to reconcile three disparate data sources: `Invoices`, `Subscriptions`, and `Payments`.
+**The Context** Subscription-based SaaS businesses frequently experience revenue leakage due to mismatches between subscriptions, invoices, and payments. While these issues are common, they are often difficult to detect without structured reconciliation logic and clear monitoring visibility.
 
-**The Impact:**
-* **Quantified Loss:** Identified **$18,348.15** in uncollected revenue for Fiscal Year 2024.
-* **Root Cause:** Pinpointed **"Zombie Accounts"** (Active Service/Unpaid) as the driver of **90.31%** of all leakage.
-* **Risk Profile:** Discovered that the **Enterprise Plan**, despite having lower volume, accounted for **70.8%** of the financial loss (Pareto Principle).
+**The Objective** The goal of this project was to design and validate analytical controls capable of identifying *where* and *why* revenue leakage occurs within a billing system — not to recover real revenue, but to **test detection logic against known failure patterns**.
+
+**The Outcome** The analysis surfaced **$18,348.15 in simulated revenue leakage exposure** for Fiscal Year 2024 and identified the dominant operational and system-level drivers of leakage. The project concludes with an executive-level monitoring dashboard designed to support prioritization and operational follow-up.
 
 ---
 
-## 💰 The Financial Forensic Report
+## 💰 Revenue Leakage Classification
 
-I classified revenue leakage into three distinct technical categories based on the gap analysis.
+Revenue leakage was classified into three deterministic categories based on reconciliation gaps between billing system components.
 
-| Leakage Category | Count | Total Lost ($) | % of Total | Definition |
-| :--- | :--- | :--- | :--- | :--- |
-| **Zombie Accounts** | **209** | **$16,570.00** | **90.31%** | Invoice Generated ➔ Payment `NULL` ➔ Service `Active` |
-| **Partial Payments** | **327** | **$1,368.15** | **7.46%** | Invoice `$100` ➔ Payment `$90` (Gateway Error) |
-| **Ghost Subscribers** | **13** | **$410.00** | **2.23%** | Subscription `Active` ➔ Invoice `NULL` (Generation Failure) |
+| Leakage Category | Count | Simulated Exposure ($) | % of Total | Definition |
+|------------------|-------|------------------------|------------|------------|
+| **Zombie Accounts** | 209 | 16,570.00 | 90.31% | Invoice exists → Payment missing → Service active |
+| **Partial Payments** | 327 | 1,368.15 | 7.46% | Invoice amount ≠ Payment amount |
+| **Ghost Subscribers** | 13 | 410.00 | 2.23% | Subscription active → Invoice missing |
 
-**Key Takeaway:** While "Ghost Subscribers" (system errors) were a concern, the data proves the primary issue is operational. We are failing to collect payments from known Enterprise customers.
+**Key Insight** While system errors ("Ghost Subscribers") were present, the analysis shows that **operational non-collection from known customers** was the primary driver of revenue leakage exposure.
 
 ---
 
-## 📊 The Revenue Integrity Dashboard
-*A high-level view designed for the CFO to monitor billing health and recovery progress.*
+## 📊 Revenue Integrity Dashboard
+
+An executive-level monitoring dashboard was designed to provide clear visibility into billing health and leakage risk.
 
 ![Dashboard Demo](visualizations/dashboard_demo.gif)
 
-*(Note: Visualizes the March 2024 volatility spike identified in the Executive Summary)*
+**Dashboard Capabilities**
+- Total leakage exposure over time  
+- Leakage composition by category  
+- High-risk plans and regions  
+- Monthly volatility trends  
+
+Filtering by **Plan Type** and **Region** enables targeted investigation and prioritization.
+
+> **Example Insight:** A volatility spike in March 2024 aligns with a simulated batch update, suggesting regression risk during system changes.
 
 ---
 
-## 🛠️ Technical Architecture & Methodology
+## 🛠 Methodology & Technical Design
 
-I built a 3-stage pipeline to transform raw transaction logs into actionable business intelligence.
+The project was structured as a **three-layer analytical pipeline**, emphasizing traceability, interpretability, and business relevance.
 
-### 1. SQL Forensic Layer (Logic & Extraction)
-Used advanced SQL to join disparate tables and isolate anomalies.
-* **Technique:** `LEFT JOIN` exclusion to find Ghosts and Zombies.
-* **Aggregation:** `UNION ALL` to combine different error types into a single `leakage_report` table.
-* **Code Snippet (Logic Used):**
-    ```sql
-    -- Identifying Zombies (Service Active but Unpaid)
-    SELECT i.invoice_id, 'Zombie' as Type
-    FROM invoices i
-    LEFT JOIN payments p ON i.invoice_id = p.invoice_id
-    WHERE p.payment_id IS NULL;
-    ```
+### 1️⃣ SQL Reconciliation Layer (Detection Logic)
 
-### 2. Python Analytics Layer (Statistical Validation)
-Used Pandas and NumPy to determine the "Shape" of the risk.
-* **The Whale Test:** Calculated Mean ($33.42) vs. Median ($9.05) loss. The **4x skew** confirmed that outliers (Whales) were driving the loss, not average users.
-* **Kill Zone Analysis:** Created a Pivot Table Heatmap (`Region` vs `Plan`) to identify that **North America (East) Enterprise** users were the highest risk segment.
+SQL was used to reconcile invoices, subscriptions, and payments and isolate billing inconsistencies.
 
-### 3. Visualization Layer (Power BI)
-* **KPIs:** Created DAX measures for `Recovery Rate %` (98.32% in Sept) and `Total Risk`.
-* **Drill Down:** Enabled filtering by Region and Plan to allow the Collections team to export "Hit Lists."
+**Techniques Used**
+- `LEFT JOIN` exclusion logic to identify missing relationships  
+- `UNION ALL` to consolidate leakage types into a single reporting table  
+- Invoice aging logic to distinguish delayed payments from true non-payment  
+
+```sql
+-- Example: Identifying unpaid active invoices
+SELECT 
+    i.invoice_id,
+    i.customer_id,
+    i.invoice_amount,
+    i.invoice_date
+FROM invoices i
+LEFT JOIN payments p 
+    ON i.invoice_id = p.invoice_id
+WHERE p.payment_id IS NULL
+  AND i.invoice_status = 'Open';
+```
+In a real production system, this logic would be combined with invoice aging thresholds and retry logic to reduce false positives.
+
+### 2️⃣ Python Analytics Layer (Risk Profiling)
+Python (Pandas, NumPy) was used to analyze the distribution and concentration of leakage exposure.
+
+**Analyses Performed**
+- **Skew Analysis:** Mean vs. median comparison revealed a 4× skew, indicating that high-value accounts (“whales”) drove most of the risk.
+- **Segment Risk Mapping:** Region × Plan heatmaps identified North America (East) Enterprise accounts as the highest exposure segment.
+
+### 3️⃣ Visualization Layer (Power BI)
+Power BI was used to translate forensic findings into actionable monitoring views.
+
+**Key Features**
+- KPIs for total exposure and detection coverage
+- Trend analysis for leakage volatility
+- Drill-down filtering by Region and Plan
+- Export-ready views to support operational follow-up
+
+*Note: Metrics focus on visibility and detection, not confirmed revenue recovery.*
 
 ---
 
 ## 🔍 Deep Dive Insights
 
-Based on the forensic analysis (see `insights/` folder), here are the validated findings:
+### 1️⃣ Enterprise Plan Vulnerability (Pareto Analysis)
+The Enterprise plan represents a minority of users but a majority of the financial risk.
 
-**1. The "Enterprise" Vulnerability (Pareto Analysis)**
-The Enterprise plan represents a minority of users but a majority of the loss.
-* **Enterprise Loss:** $12,994 (70.8%)
-* **Basic Loss:** $838 (<5%)
-* *Action:* Engineering must audit the custom billing logic for Enterprise accounts, specifically regarding multi-seat calculations.
+- **Enterprise Exposure:** $12,994 (70.8%)
+- **Basic Exposure:** $838 (<5%)
 
-**2. The March 2024 Volatility**
-Trend analysis revealed a leakage spike in **March 2024 ($2,424 lost)**, which was double the average of surrounding months. This correlates with the Q1 Batch Update, suggesting a regression bug was introduced and later partially patched.
+**Root Cause:** The disproportionate risk suggests that **custom billing logic** for Enterprise accounts—specifically regarding **multi-seat calculations**—is a primary failure point compared to the standard logic used for Basic plans.
 
-**3. The Operational Fix**
-Since 90% of leakage is "Zombie Accounts" (Invoices exist, but unpaid), this is not a code error—it is a process error. The system lacks an **Auto-Suspend** feature for invoices aged > 45 days.
+### 2️⃣ March 2024 Volatility & Regression Risk
+Trend analysis revealed a leakage spike in **March 2024 ($2,424 exposure)**, which was approximately **double the average** of surrounding months.
 
----
+**Interpretation:** This spike correlates with a simulated Q1 Batch Update. This pattern suggests a **regression bug** was introduced during the update and likely only partially patched, leading to continued but lower leakage in subsequent months.
 
-## 📂 Repository Structure
+### 3️⃣ Operational Process Gap (The "Auto-Suspend" Failure)
+Since **90.31%** of leakage is driven by "Zombie Accounts" (Invoices generated but unpaid), the issue is primarily **process-driven**, not a code error.
 
-The project is organized into a modular ETL and Analysis pipeline:
-
-* **`sql/`**: The Core Forensic Logic.
-    * `01_schema_setup.sql`: Database creation.
-    * `05_forensic_classification.sql`: The logic identifying Zombies vs Ghosts.
-    * `08_dashboard_view.sql`: The "Golden View" for BI ingestion.
-* **`notebooks/`**: Python Analysis & Data Engineering.
-    * `00_data_generator.ipynb`: The "Chaos Matrix" script that created the synthetic data.
-    * `02_statistical_forensics.ipynb`: Pareto and Skew analysis.
-* **`insights/`**: Final Business Reports.
-    * `02_root_cause_report.md`: Detailed breakdown of leakage types.
-    * `03_executive_summary.md`: Final presentation points.
-* **`docs/`**: Project Documentation.
-    * `01` - `09`: Chronological logs of the project lifecycle.
-* **`dashboard/`**: The Power BI `.pbix` file.
-* **`data/`**: `raw` inputs and `derived` outputs.
-
+- **Control Gap:** The system currently lacks an **Auto-Suspend feature** for invoices aged > 45 days.
+- **Recommendation:** Implementing automated service suspension for aging invoices would immediately mitigate 90% of the forward-looking risk.
 
 ---
-
-## 🚀 How to Run This Project
-
-*Note: This project is designed to be reviewed end-to-end as a portfolio demonstration rather than executed as a production system.*
-
-1.  **Database:** Import `sql/01_schema_setup.sql` into MySQL to initialize the environment.
-2.  **Analysis:** Run `notebooks/02_statistical_forensics.ipynb` to see the Python risk assessment.
-3.  **Dashboard:** Open `dashboard/Revenue Leakage Dashboard.pbix` in Power BI to interact with the data.
-
----
-
 * **Author:** **Omkar Dhanke**    
 * **Connect with me:** [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/omkar-dhanke)
-
