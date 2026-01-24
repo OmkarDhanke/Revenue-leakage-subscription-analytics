@@ -145,3 +145,14 @@
     * **Hit List:** Created a detailed table for the Collections team to download.
 
 👉 **[View Design Doc](Docs/09_dashboard_design.md)**
+
+### 📅 Day 14 — Dashboard Refinement & Reporting Structure
+
+The core analytical work for the project was completed during Days 1–13, including data simulation, reconciliation logic, validation, and leakage analysis.  
+The initial deliverable at the end of this phase was a **single-page dashboard** summarizing overall revenue leakage and primary failure modes.
+
+On Day 14, the dashboard was **refined into a five-page executive monitoring report** to improve clarity, usability, and decision support.  
+No new data, assumptions, or detection logic were added.  
+The refinement focused purely on restructuring existing insights into dedicated views for executive overview, diagnosis, risk concentration, operational exposure, and ongoing monitoring.
+
+This change reflects a presentation and communication enhancement, not an expansion of analytical scope.
