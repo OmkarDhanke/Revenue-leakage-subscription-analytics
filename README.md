@@ -1,7 +1,7 @@
 # 📉 CloudFlow
 ## Revenue Leakage Detection in a Simulated SaaS Billing System
 
-**Status:** ![Status](https://img.shields.io/badge/Status-Completed-success) ![Tools](https://img.shields.io/badge/Tools-SQL%20%7C%20Python%20%7C%20PowerBI-blue) ![Domain](https://img.shields.io/badge/Domain-SaaS%20Billing%20%7C%20FinOps-orange)
+![Status](https://img.shields.io/badge/Status-Completed-success) ![Tools](https://img.shields.io/badge/Tools-SQL%20%7C%20Python%20%7C%20PowerBI-blue) ![Domain](https://img.shields.io/badge/Domain-SaaS%20Billing%20%7C%20FinOps-orange)
 
 **An end-to-end analytical audit simulation that models a SaaS subscription billing environment to detect, classify, and monitor revenue leakage exposure using SQL, Python, and Power BI. The project is designed to reflect how analytics teams support revenue integrity, operational prioritization, and monitoring in subscription-based businesses.**
 
@@ -321,3 +321,4 @@ Implementing an automated suspension or escalation rule for invoices aged >45 da
 ---
 * **Author:** **Omkar Dhanke**    
 * **Connect with me:** [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/omkar-dhanke)
+
