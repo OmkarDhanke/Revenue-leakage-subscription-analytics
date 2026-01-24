@@ -10,7 +10,7 @@
 >⚠️ **Important Note**
 > - **All data used in this project is synthetically generated** to simulate realistic SaaS billing failure scenarios.
 > - **Financial figures represent simulated revenue leakage exposure**, not actual revenue recovery.
-> - This project focuses on **analytical validation and control design**, not financial reporting.
+> - This project focuses on revenue **analytics, reconciliation logic, and control validation,** not statutory or audited financial reporting.
 
 ---
 
@@ -321,5 +321,6 @@ Implementing an automated suspension or escalation rule for invoices aged >45 da
 ---
 * **Author:** **Omkar Dhanke**    
 * **Connect with me:** [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/omkar-dhanke)
+
 
 
